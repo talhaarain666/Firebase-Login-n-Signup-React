@@ -32,6 +32,7 @@ function Login() {
             console.log(err);
         })
     }
+
     return (<>
 
         <Typography variant="h3">LOGIN</Typography>
@@ -42,4 +43,5 @@ function Login() {
     </>)
 
 }
+
 export default Login;

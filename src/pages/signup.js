@@ -7,6 +7,7 @@ function Signup() {
 
     const [userObj, setUserObj] = useState({});
     const [loader, setLoader] = useState(false);
+  
 
     let signupUser = () => {
 
@@ -24,9 +25,10 @@ function Signup() {
         signUpUser(userObj).then((res) => {
             setLoader(false)
             console.log(res);
-            sendData(userObj,"users",res.user.uid).then(()=>{
+            sendData(userObj, "users").then(() => {
                 console.log("Successfully Saved")
-            }).catch((err)=>{
+             
+            }).catch((err) => {
                 console.log(err)
             })
         }).catch((err) => {

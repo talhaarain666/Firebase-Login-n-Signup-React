@@ -1,21 +1,40 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { getData } from "../config/firebase/firebasemethods";
 
-function HomePg (){
-  
-const params = useParams();
+function HomePg() {
 
-useEffect(()=>{
-    if(params.id){
-        getData("users");
+    const params = useParams();
+    const location = useLocation();
+    
+
+    let usersData = () => {
+        if (params.id) {
+            getData("users");
+        }
     }
-},[])
 
-    return(<>
-    
-   <h1>HOME</h1>
-    
+    useEffect (() => {
+        usersData();
+        getData("formdata");
+        
+        console.log(location)
+    }, [])
+
+
+
+    return (<>
+
+        {/* {location.state.map((val, i) => {
+            return <>
+
+                <h4>{val.name}</h4>
+                <h4>{val.email}</h4>
+                <h4>{val.address}</h4>
+            </>
+        })} */}
+        <h1>HOME</h1>
+
     </>)
 }
 
